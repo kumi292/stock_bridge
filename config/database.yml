@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: kumi_record_development
+  database: stock_bridge
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: kumi_record_test
+  database: stock_bridge_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -57,18 +57,18 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: kumi_record_production
-    username: kumi_record
-    password: <%= ENV["KUMI_RECORD_DATABASE_PASSWORD"] %>
+    database: stock_bridge_production
+    username: stock_bridge
+    password: <%= ENV["stock_bridge_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
-    database: kumi_record_production_cache
+    database: stock_bridge_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: kumi_record_production_queue
+    database: stock_bridge_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: kumi_record_production_cable
+    database: stock_bridge_production_cable
     migrations_paths: db/cable_migrate
